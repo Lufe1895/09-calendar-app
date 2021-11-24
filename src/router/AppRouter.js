@@ -32,14 +32,14 @@ export const AppRouter = () => {
                         }}
                 >
                     <div 
-                        class="spinner-border text-primary" 
+                        className="spinner-border text-primary" 
                         role="status"
                         style={{
                             width: '4rem',
                             height: '4rem',
                         }}
                     >
-                        <span class="visually-hidden"></span>
+                        <span className="visually-hidden"></span>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import DateTimePicker from 'react-datetime-picker';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/events';
+import { eventClearActiveEvent, eventUpdated, startEventAddNew } from '../../actions/events';
 import { uiCloseModal } from '../../actions/ui';
 
 const customStyles = {
@@ -24,7 +24,7 @@ const now = moment().minutes(0).seconds(0).add(1, 'hours');
 const then = now.clone().add(1, 'hours');
 
 const initEvent = {
-    title: 'Evento',
+    title: '',
     notes: '',
     start: now.toDate(),
     end: then.toDate(),
@@ -95,14 +95,7 @@ export const CalendarModal = () => {
         if(activeEvent) {
             dispatch(eventUpdated(formValues));
         } else {
-            dispatch(eventAddNew({
-                ...formValues,
-                id: new Date().getTime(),
-                user: {
-                    _id: '123',
-                    name: 'Fernando',
-                }
-            }));
+            dispatch(startEventAddNew(formValues));
         }
 
         setTitleValid(true);
